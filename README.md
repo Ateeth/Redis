@@ -1,2 +1,2 @@
 # Redis
-Basics of Redis I have learnt
+Basics of Redis
