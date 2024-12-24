@@ -484,3 +484,32 @@ xlen command
 ```
 xlen race:france
 ```
+
+### Redis Geospatial Data
+
+Redis geospatial indexes let you store coordinates and search for them.
+
+This data structure is useful for finding nearby points within a given radius or bounding box.
+
+#### geoadd
+
+adds a location to a given geospatial index (note that longitude comes before latitude with this command).
+
+```
+geoadd bikes:rentable -122.27652 37.805186 station:1
+
+geoadd bikes:rentable -122.2674626 37.8062344 station:2
+
+geoadd bikes:rentable -122.2469854 37.8104049 station:3
+```
+
+#### geosearch
+
+returns locations with a given radius or bounding box
+Use _fromlonlat_, _withdist_, _byradius_ arguments
+
+Example to _find all locations within 5 km radius of a given location and return the distance to each location_
+
+```
+geosearch bikes:rentable fromlonlat -122.2612767 37.7936847 byradius 5 km withdist
+```
