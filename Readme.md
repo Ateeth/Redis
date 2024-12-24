@@ -152,6 +152,15 @@ Can be used to decrement key values by specific value
 
 Returned value will be 0
 
+#### ttl
+
+To find the amount of time key will live
+By default value is -1 i.e no expiry
+
+```
+ttl {{keyName}}
+```
+
 #### expire
 
 Can be used to erase value of key after a particular time
@@ -161,6 +170,16 @@ Can be used to erase value of key after a particular time
 ```
 
 The value of count-4 will expire after 10 seconds
+
+#### Set a key with expiration time at first itself
+
+_setex_ command
+
+```
+setex name 10 ateeth
+```
+
+Key name will be set to _ateeth_ and will expire after 10 seconds
 
 ### Lists in Redis
 
@@ -253,20 +272,36 @@ Use _del_ command
  del count
 ```
 
+### Check if key exists in redis
+
+Use _exists_ command
+
+```
+exists {{keyName}}
+```
+
 The count key will be deleted
+
+### Clear all keys at once
+
+_flushall_ command to delete all keys
+
+```
+flushall
+```
 
 ### Display keys with specific pattern
 
-Use _KEYS_ command
+Use _keys_ command
 
 ```
- KEYS msg:*
+ keys msg:*
 ```
 
 Lists all the keys that start with msg:
 
 ```
- KEYS *:*
+ keys *
 ```
 
 The above snippet lists all the keys
@@ -324,6 +359,14 @@ Gets the intersection of 2 sets
 ```
 
 Prints 4 which is intersection of s1, s2
+
+#### smembers
+
+Prints the values in the set
+
+```
+smembers s1
+```
 
 ### Hashes in Redis
 
@@ -386,6 +429,22 @@ hvals command
 
 ```
  hvals bike:1
+```
+
+#### Delete a key value pair
+
+_hdel_ command
+
+```
+ hdel bike:1 price
+```
+
+#### Check if key exists
+
+_hexists_ command
+
+```
+hexists bike:1 price
 ```
 
 ### Sorted sets in Redis
